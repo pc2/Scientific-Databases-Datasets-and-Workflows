@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('./logos/UPB_bg.png');
+            /*MH: Replace with the path to your image */
+            background-size: 500px 500px;
+            /*MH: Scales the image to cover the entire background */
+            background-position: center;
+            /*MH: Centers the image */
+            background-repeat: repeat;
+            /*MH: Prevents/allow the image from repeating */
+            /*background: #4c9fa7; /*MH: background color of entire page(see the color behind the text, table etc)*/
+            margin: 0;
+            padding: 0;
+        }
+
+        /*MH: This puts the logo in the top-right INSIDE the card area ------starts*/
+        #main-header {
+            position: relative;
+            /* Establishes positioning context for the child logo */
+            padding-top: 60px;
+            /* Adjust as needed to prevent overlap with logo */
+        }
+
+        /* Style for the logo */
+        .in-card-logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 70px;
+            /*MH: Adjust size as needed */
+            width: auto;
+            box-shadow: none;
+        }
+
+        /* Optional: style the title for spacing */
+        #title-heading {
+            margin-top: 20px;
+            /*MH: Remove extra margin if any */
+        }
+
+        /*MH: This puts the logo in the top-right INSIDE the card area ------ends*/
+
+        /* Card for main text content */
+        .card {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            /*MH: text background color*/
+            color: #222020;
+            /*MH: text color*/
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 30px 30px 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px 0 rgba(60, 80, 180, 0.07), 0 1.5px 5px 0 rgba(60, 80, 180, 0.08);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #5d5f12;
+            /*MH: title text color*/
+            font-weight: 700;
+            /*MH: title text width */
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #757c12;
+            /*MH: underline color of title*/
+            padding-bottom: .1em;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: #6b7880;
+        }
+
+        h3 {
+            font-size: 1.15em;
+            color: #265772;
+        }
+
+        ul,
+        ol {
+            margin-left: 2em;
+        }
+
+        a {
+            color: #1c6ddd;
+            /*MH: link text color*/
+            text-decoration: none;
+            border-bottom: none;
+            /*1px dotted #ffffff;*/
+            /*MH: color of link underline*/
+            transition: border 0.1s;
+        }
+
+        a:hover {
+            color: #230397;
+            /*MH: color when the mouse is over the link*/
+            border-bottom: 2px solid #ec1bb8;
+            /*MH: color underline of link for mouse hover*/
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 8px 0;
+            box-shadow: 0 1px 4px 0 rgba(74, 73, 153, 0.08);
+        }
+
+        /* Wide, full-view table with scroll if needed */
+        .fullwidth-table-outer {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 2em 0;
+            background: none;
+            display: block;
+            padding: 0;
+            left: 0;
+            right: 0;
+            transform: none;
+        }
+
+        .fullwidth-table-outer table {
+            width: 100%;
+            min-width: 400px;
+            /* Optional: smaller for better fit */
+            max-width: 100%;
+        }
+
+        .fullwidth-table-outer th,
+        .fullwidth-table-outer td {
+            padding: 14px 14px;
+            border-bottom: 1px solid #edf1f5;
+        }
+
+        .fullwidth-table-outer th {
+            background: linear-gradient(90deg, #eaf4fd 0%, #dbeaf2 100%);
+            color: #f78412;  /*MH: defines the text color of the header cells*/
+            border-bottom: 2px solid #c2d9ec;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .fullwidth-table-outer tbody tr:nth-child(odd) {
+            background-color: #f5f7fa; /*MH: defines the zebra color of the table*/ 
+        }
+
+        .fullwidth-table-outer tbody tr:hover {
+            background: #eaf4fd;
+            transition: background 0.2s;
+        }
+
+        /* .card td, li { */
+        .card td {
+            text-align: justify;
+            /*MH: This make the text even from both left and right side*/
+        }
+
+        .contents-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <title>
+        Scientific-Databases-Datasets-Workflows.html 
+    </title>
+</head>
+
+<body>
+    <header style="font-size:2.0em;
+                   font-weight:600;
+                   letter-spacing:1px;
+                   color:#efd110; 
+                   margin-bottom:1.0em; 
+                   text-align:center;
+                   padding-top:40px;"> <!--MH: adjust position of the header text-->
+        PC<sup>2</sup> presents <!--MH: Put header title here and color is defined just few lines above-->
+    </header>
+    <div class="card">
+        <div id="page">
+            <div id="main">
+                <div id="main-header">
+                    <img src="./logos/pc2_logo_2.png" alt="PC2 Logo" class="in-card-logo">
+                    <h1 id="title-heading">
+                        <span id="title-text">
+                            Scientific Databases, Datasets and Workflows
+                        </span>
+                    </h1>
+                </div>
+                <div id="content">
+                    <div id="main-content">
+                    </div>
+                    <div class="fullwidth-table-outer">
+                        <table>
+                            <tr>
+                                <th>
+                                    Title
+                                </th>
+                                <td>
+                                    Scientific Databases, Datasets and Workflows in Physics,
+                                    Chemistry, Materials Science and Atomistic Simulations
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Description
+                                </th>
+                                <td>
+                                    This portal is your gateway to curated databases, datasets,
+                                    and computational workflows supporting research in physics,
+                                    chemistry, materials science, and atomistic simulations.
+                                    Here you'll find organized data collections, downloadable
+                                    datasets, and reproducible analysis pipelines designed to
+                                    accelerate discovery and innovation. Whether you're searching
+                                    for property databases, simulation-ready datasets, or tools
+                                    to streamline your computational research, begin your
+                                    exploration here.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Created by
+                                </th>
+                                <td>
+                                    <a href="https://pc2.uni-paderborn.de/support">
+                                        PC<sup>2</sup> scientific support team 
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <div class="card">
+                    </div> -->
+
+                    <ul class="contents-list">
+                        <div>
+                            <div>
+                                <h2>
+                                    Contents:
+                                </h2>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="databases.html">
+                                        Materials Science Databases
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="workflows.html">
+                                        Materials Science Workflows
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="datasets.html">
+                                        Curated Datasets for ML &amp; AI Applications in Materials Science and
+                                        Atomistics
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+
+                    <!--MH: Some pic of noctua HPC-------------starts-->
+                    <div style="margin: 30px -30px 0 -30px;">
+                        <img src="./logos/pc2hpc.jpg" alt="noctua HPC pic"
+                            style="width:100%; 
+                                   max-width:100%; 
+                                   border-radius: 0 0 0 0; 
+                                   box-shadow: 0 1.5px 7px 0 rgba(60, 80, 180, 0.18);" />
+                        <div style="color: #8ea9b9; 
+                                    font-size: 0.95em; 
+                                    margin-top: 8px; 
+                                    text-align: center;">
+				    <!-- Figure: Noctua (PC<sup>2</sup>@HPC) -->
+				    Figure:
+                                    <a href="https://pc2.uni-paderborn.de/systems-and-services/noctua-2"
+                                       style="color: #8ea9b9; text-decoration: none;"
+                                       target="_blank"
+                                       rel="noopener noreferrer">
+                                        Noctua 2
+                                    </a>
+                                    (PC<sup>2</sup>@HPC)
+                        </div>
+                    </div>
+                    <!--MH: Some pic of noctua HPC-------------ends-->
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <div>
+                Created by
+                <span>
+                    Manoar Hossain
+                </span>
+                <!-- Added latest update date & time = starts -->
+                <footer>
+                    <p id="last-update"></p>
+                </footer>
+                <script>
+                    document.getElementById('last-update').textContent = "Last updated: " + document.lastModified;
+                </script>
+                <!-- Added latest update date & time = ends -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

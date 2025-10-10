@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('./logos/UPB_bg.png');
+            /*MH: Replace with the path to your image */
+            background-size: 500px 500px;
+            /*MH: Scales the image to cover the entire background */
+            background-position: center;
+            /*MH: Centers the image */
+            background-repeat: repeat;
+            /*MH: Prevents/allow the image from repeating */
+            /*background: #4c9fa7; /*MH: background color of entire page(see the color behind the text, table etc)*/
+            margin: 0;
+            padding: 0;
+        }
+
+        /*MH: add logo CSS below top right of the browser page (Say PC2 logo) -------starts*/
+        .page-logo-topright {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            height: 48px;
+            z-index: 1000;
+        }
+        @media (max-width: 600px) {
+            .page-logo-topright {
+                height: 36px;
+                top: 8px;
+                right: 12px;
+            }
+        }
+        /*MH: add logo CSS below top right of the browser page (Say PC2 logo) -------ends*/
+
+        /*MH: this will put a logo in the text page right-side of Title --------------starts*/
+        .main-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1em;
+        }
+        .page-logo-inpage {
+            height: 48px;
+            width: auto;
+            margin-left: 32px;
+        }
+        @media (max-width: 600px) {
+            .main-title-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .page-logo-inpage {
+                margin-left: 0;
+                margin-top: 15px;
+                height: 36px;
+            }
+        }
+        /*MH: this will put a logo in the text page right-side of Title --------------ends*/
+
+        /*MH: This puts the logo in the top-right INSIDE the card area ------starts*/
+        /* #main-header {
+            position: relative;
+        } */
+        /* Layout for header */
+        #main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* left–center–right */
+            padding: 10px 20px; /* spacing inside header */
+            position: relative;
+        }
+        .in-card-logo {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            height: 70px; /*MH: scale or adjust as you like */
+            width: auto;
+            z-index: 10;
+            box-shadow: none;
+        }
+        #title-heading {
+            text-align: center; /* Or left, if you prefer */
+            margin-top: 80px;   /* Leaves space so the logo doesn't overlap title */
+            /* You can adjust margin-top if you make the logo bigger/smaller */
+        }
+        /*MH: This puts the logo in the top-right INSIDE the card area ------ends*/
+
+        /*-------------------------------------------------------------starts*/
+        /*MH: this part will hide column mention in the parentheses ()*/
+        col:nth-child(9),
+        col:nth-child(10) {
+            display: none;
+        }
+
+        th:nth-child(9),
+        th:nth-child(10),
+        td:nth-child(9),
+        td:nth-child(10) {
+            display: none;
+        }
+        /*-------------------------------------------------------------ends*/
+
+        /* Card for main text content */
+        .card {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            /*MH: text background color*/
+            color: #222020;
+            /*MH: text color*/
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 30px 30px 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px 0 rgba(60, 80, 180, 0.07), 0 1.5px 5px 0 rgba(60, 80, 180, 0.08);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #5d5f12;
+            /*MH: title text color*/
+            font-weight: 700;
+            /*MH: title text width */
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #757c12;
+            /*MH: underline color of title*/
+            padding-bottom: .1em;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: #6b7880;
+        }
+
+        h3 {
+            font-size: 1.15em;
+            color: #265772;
+        }
+
+        ul,
+        ol {
+            margin-left: 2em;
+        }
+
+        a {
+            color: #1c6ddd;
+            /*MH: link text color*/
+            text-decoration: none;
+            border-bottom: none; /*1px dotted #ffffff;*/
+            /*MH: color of link underline*/
+            transition: border 0.1s;
+        }
+
+        a:hover {
+            color: #230397;
+            /*MH: color when the mouse is over the link*/
+            border-bottom: 2px solid #ec1bb8;
+            /*MH: color underline of link for mouse hover*/
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 8px 0;
+            /* box-shadow: 0 1px 4px 0 rgba(74, 73, 153, 0.08); */ /*MH: this create a box shadow*/
+            box-shadow: none; 
+        }
+
+        /*MH: Properties of the table ------------------------------starts*/
+        /* Wide, full-view table with scroll if needed */
+        .fullwidth-table-outer {
+            width: 100vw;
+            /* Full viewport width */
+            box-sizing: border-box;
+            /* Includes padding/borders in width */
+            overflow-x: auto;
+            /* Horizontal scrollbar for wide table */
+            height: 80vh;
+            /* Fixed height to 80% of viewport height */
+            /* margin: 2em 0; */
+            margin: 2em auto;
+            /* Top/bottom margins */
+            background: none;
+            display: block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            /* Center the container */
+            padding: 0;
+        }
+
+        .fullwidth-table-outer table {
+            margin: 0 auto;
+            /* Center table */
+            min-width: 1200px;
+            /* Wider table to ensure horizontal scroll */
+            max-width: 98vw;
+            /* Limit width to viewport */
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #dff7f8;
+            /*MH: color of even row of table*/
+            border-radius: 12px;
+            box-shadow: 0 1px 6px 0 rgba(40, 60, 120, 0.04);
+            text-align: left;
+            font-size: 1.05em;
+        }
+
+        .fullwidth-table-outer thead th,
+        .fullwidth-table-outer tr:first-child {
+            position: sticky;
+            /* Keep header fixed */
+            top: 0;
+            /* Stick to top of container */
+            background: #f1eeee;
+            /* Light gray background for clarity */
+            z-index: 1000;
+            /* Stay above rows */
+            /* will-change: transform;    */
+            /* hint to browsers */
+            /* backface-visibility: hidden;     */
+            /* reduce FF flicker */
+        }
+
+        .fullwidth-table-outer th,
+        .fullwidth-table-outer td {
+            padding: 14px 14px;
+            border-bottom: 1px solid #4b759c;
+            /*MH: color of horizontal line of table*/
+            border-right: 1px solid #4b759c;
+            /*MH: color of vertical line of table*/
+        }
+
+        .fullwidth-table-outer th {
+            background: linear-gradient(90deg, #e366e7 0%, #e3ec93 100%);
+            /*MH: color of heading of table (two colors for gradient)*/
+            color: #142f47;
+            /*text color of table heading*/
+            border-bottom: 2px solid #185b9eb7;
+            /*bottom line of heading of table*/
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .fullwidth-table-outer tbody tr:nth-child(even) {
+            background-color: #ffffee;
+            /*MH: color of zebra table odd row*/
+        }
+
+        .fullwidth-table-outer tbody tr {
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s, border-left 0.2s;
+        }
+
+        .fullwidth-table-outer tbody tr:hover {
+            background: #ade6df;
+            /*MH: darker for even rows on hover*/
+            box-shadow: 0 4px 12px rgba(40, 60, 120, 0.15);
+            /*MH: Floating effect on hover*/
+            /* animation: floatUpDown 1.5s ease-in-out infinite; /*MH: Animation for up and down float */
+            transform: translateY(-2px);
+            /*MH: Lift row for floating effect*/
+            border-left: 4px solid #f2aef7;
+            /*MH: Enhanced highlight*/
+        }
+
+        .fullwidth-table-outer tbody tr:nth-child(even):hover {
+            background: #dfdfc6;
+            /*MH: darker color for odd rows on hover*/
+            box-shadow: 0 4px 12px rgba(40, 60, 120, 0.15);
+            /*MH: Floating effect on hover*/
+            /* animation: floatUpDown 1.5s ease-in-out infinite; /*MH: Animation for up and down float */
+            transform: translateY(-2px);
+            /*MH: Lift row for floating effect*/
+            border-left: 4px solid #f2aef7;
+            /*MH: Enhanced highlight*/
+        }
+        /*MH: Properties of the table ------------------------------ends*/
+
+        /* p { */
+        p:not(table p) {
+            text-align: justify;  /*MH: This make the text even from both left and right side*/
+        }
+
+        /*MH: This part takes care of the expandable/collapsable part----------------starts*/ 
+        .expander {
+            margin-bottom: 8px; /* Adds space between each expander section */
+        }
+        .expander button {
+            background-color: #f5e39b;  /*MH: button color of expandable/collapsable*/
+            color: #333;                /*MH: Text color */
+            border: none;                 /*MH: Remove border */
+            border-radius: 6px;           /*MH: Rounded corners */
+            padding: 10px 20px;           /*MH: Space inside button */
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s; 
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px 0 rgba(15, 34, 117, 0.16); /*MH: Shadow added to the button */
+        }
+        .expander button:hover {
+            background-color: #b6a354;  /*MH: color on hover */
+            box-shadow: 0 4px 16px 0 rgba(20, 50, 139, 0.2); /*MH: Deeper shadow on hover */
+            transform: translateY(-2px); /*MH: Makes the button float upwards */
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .expander-content {
+            border: 2px solid #d4b020;           /*MH: color of the border */
+            background: #e1f5f3;                 /*MH: color of background */
+            border-radius: 40px 41px 38px 43px / 46px 49px 45px 41px; /*MH: make rounded boarder*/
+            /* border-radius: 8px;  */
+            padding: 16px 20px;
+            margin-top: 14px;
+            position: relative;                  /* Needed for the arrow */
+            box-shadow: 0 2px 8px rgba(15,34,117,0.08);
+        }
+        .expander-content::before {
+            content: "";
+            position: absolute;
+            top: -16px; 
+            left: 30px;    /*MH: arrow at the box*/
+            /* transform: translateX(-50%); */
+            width: 0;
+            height: 0;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-bottom: 16px solid #e6c130;   /*MH: Arrow color matches border */
+        }
+        .expander-content::after {
+            content: "";
+            position: absolute;
+            top: -13px;
+            left: 30px;    /*MH: arrow at the box*/
+            /* transform: translateX(-50%); */
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 13px solid #e1f5f3;   /*MH: Arrow color matches box background */
+        }
+        /*MH: This part takes care of the expandable/collapsable part----------------ends*/ 
+
+        /*MH: This part will split in the page and make it double column------------starts*/
+        .content-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px; /*MH: space between text and image */
+        }
+        .content-left {
+            flex: 1;
+            min-width: 0;
+        }
+        .content-right img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 8px;
+        }
+        @media (max-width: 900px) {
+            .content-layout {
+                flex-direction: column;
+            }
+            .content-right img {
+                margin-top: 20px;
+                max-width: 100%;
+            }
+        }
+        /*MH: This part will split in the page and make it double column------------ends*/
+
+    </style>
+    <title>
+        Materials-Science-Datasets.html 
+    </title>
+    <!--MH: file name *.html-->
+</head>
+
+<body>
+    <header style="font-size:2.0em;
+                   font-weight:600;
+                   letter-spacing:1px;
+                   color:#efd110; 
+                   margin-bottom:1.0em; 
+                   text-align:center;
+                   padding-top:40px;"> <!--MH: adjust position of the header text-->
+        PC<sup>2</sup> presents <!--MH: Put header title here and color is defined just few lines above-->
+    </header>
+    <div class="card">
+        <div id="page">
+            <div id="main">
+                <div id="main-header">
+                    <!-- <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li>
+                                <span>
+                                    <a href="index.html">
+                                        PC2 presents
+                                    </a>
+                                </span>
+                            </li>
+                        </ol>
+                    </div> -->
+                    <!-- <img src="./logos/pc2_logo_2.png" alt="PC2 Logo" class="page-logo-topright"> -->
+                    
+                    <!-- <img src="./logos/pc2_logo_2.png" alt="PC2 Logo" class="page-logo-topright"> -->
+                    <!-- <img src="./logos/pc2_logo.png" alt="PC2 Logo" class="page-logo-inpage"> -->
+                    
+                    <!-- <div class="main-title-row"> -->
+                        <h1 id="title-heading">
+                            <span id="title-text">
+                                Curated Datasets for ML &amp; AI Applications in Materials Science and Atomistics
+                            </span>
+                        </h1>
+                        <img src="./logos/pc2_logo_2.png" alt="PC2 Logo" class="in-card-logo">
+                    <!-- </div> -->
+
+                </div>
+                <div id="content">
+                    
+                    <div id="main-content">
+                        <p>
+                            <strong>
+                                Introduction:
+                            </strong>
+                        </p>
+                        <p> 
+                            In the rapidly evolving domains of physics, chemistry, materials science,
+                            and atomistic simulations, a multitude of datasets have been curated to
+                            drive innovation and exploration. These datasets encompass both experimental
+                            and computational data, enabling researchers to conduct high-throughput
+                            screenings and seamlessly integrate machine learning (ML) techniques.
+                            They play a crucial role in advancing big data initiatives and harnessing
+                            artificial intelligence (AI) to predict and design new materials. Below is
+                            an extensive collection of key datasets that serve as invaluable resources
+                            for researchers and scientists engaged in these interdisciplinary fields.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <strong>
+                                Motivation:
+                            </strong>
+                        </p>
+                        <p>
+                            Datasets are vital in materials science because they provide structured,
+                            high-quality data that fuel computational models, validate experiments,
+                            and accelerate the discovery of novel materials. By offering pre-curated
+                            collections of properties like crystal structures, electronic band gaps,
+                            or reaction energies, these datasets eliminate the need for time-intensive
+                            data generation, enabling researchers to focus on analysis and innovation.
+                            They empower AI and ML to uncover patterns and predict material behaviors,
+                            driving advancements in fields like energy storage, catalysis, and
+                            nanotechnology, while fostering reproducible and collaborative research.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <strong>
+                                Purpose:
+                            </strong>
+                        </p>
+                        <p>
+                            This table compiles key open-access, free to use and community-curated
+                            datasets to guide researchers in selecting data resources that align with
+                            their scientific objectives, whether for atomistic simulations, machine
+                            learning model training, or high-throughput materials screening. It provides
+                            a concise overview of each dataset’s scope, data types, size, and tools,
+                            enabling users to compare options and leverage these collections for
+                            cutting-edge research. Designed for physicists, chemists, materials
+                            scientists, and data scientists, this resource aims to enhance productivity
+                            and promote data-driven discoveries through accessible, standardized datasets.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <!------------------------------------------------------------------------>
+                        <div class="content-layout">
+                            <div class="content-left">
+                                <p>
+                                    <strong>
+                                        Key Term Definitions:
+                                    </strong>
+                                </p>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Dataset
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            A dataset is an organized collection of data, typically stored in a
+                                            structured format, such as a table or spreadsheet, designed for efficient
+                                            storage, retrieval, and analysis. This structured approach allows for easy
+                                            access to the data, facilitating a wide range of analytical tasks and
+                                            informed decision-making.
+                                            <a href="https://en.wikipedia.org/wiki/Data_set" rel="nofollow">
+                                                Dataset-Wikipedia
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            High-throughput
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            High-throughput refers to the automated process of screening and analyzing
+                                            a large number of samples or materials or data points efficiently and
+                                            systematically. In various scientific contexts, such as in genomics,
+                                            pharmaceuticals, and materials science, high-throughput techniques allow
+                                            researchers to conduct experiments and collect data on a massive scale,
+                                            accelerating the discovery and analysis processes. High-throughput
+                                            screening (HTS), for example, is a method used in drug discovery to
+                                            quickly assess the biological or biochemical activity of a large number
+                                            of compounds.
+                                            <a href="https://en.wikipedia.org/wiki/High-throughput_screening" rel="nofollow">
+                                                High-Throughput Screening - Wikipedia
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            FAIR Principles
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            FAIR principles are basically a set of guidelines designed to ensure data is
+                                            Findable, Accessible, Interoperable, and Reusable (FAIR), promoting
+                                            efficient
+                                            data sharing and reproducibility in scientific research, particularly in
+                                            materials science and other data-driven fields.
+                                            <a href="https://www.go-fair.org/fair-principles/" rel="nofollow">
+                                                FAIR Principles - GO FAIR
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Data Provenance
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Data provenance, often referred to as data lineage, is the documentation of
+                                            the origin, movement, and transformation of data throughout its
+                                            lifecycle—from
+                                            creation or capture to storage, analysis, and ultimately, final use or
+                                            sharing.
+                                            It provides a record of where data comes from, how it is processed, and what
+                                            happens to it over time. This information is crucial for ensuring data
+                                            integrity, reproducibility, and trustworthiness.
+                                            <a href="https://en.wikipedia.org/wiki/Data_lineage#Data_provenance" rel="nofollow">
+                                                Data Provenance - Wikipedia
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Big Data
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Big Data refers to extremely large and complex datasets that cannot be
+                                            effectively processed or analyzed using traditional data processing tools
+                                            and methods. It is characterized by the "3 Vs" (Volume, Velocity, Variety)
+                                            and often extended to include Veracity and Value.
+                                            <a href="https://en.wikipedia.org/wiki/Big_data" rel="nofollow">
+                                                Wikipedia - Big Data
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Meta Data
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Metadata is data that provides information about other data, describing
+                                            its characteristics, structure, or context to facilitate its management,
+                                            discovery, and use. Often referred to as "data about data," metadata
+                                            includes details such as the data’s source, format, size, creation date,
+                                            author, location, or permissions.
+                                            <a href="https://en.wikipedia.org/wiki/Metadata" rel="nofollow">
+                                                Wikipedia - Metadata
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+			    <!--
+                            <div class="content-right">
+                                <img src="./logos/DatasetDiagram.png" alt="Dataset cartoon">
+			    </div> -->
+			    <div class="content-right">
+                                <img src="./logos/DatasetDiagram.png" alt="Dataset cartoon">
+                              
+                                <div style="font-size: 0.9em; color: #8ea9b9; margin-top: 4px;">
+                                  Figure: Dataset (
+                                  <a href="https://guides.dataverse.org/en/latest/user/dataset-management.html"
+                                     style="color: #8ea9b9; text-decoration: none;"
+                                     target="_blank"
+                                     rel="noopener noreferrer">
+                                     credit
+                                  </a>
+                                  )
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <div class="fullwidth-table-outer">
+                            <table>
+                                <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col /> <!--MH: hidden as this colum does not make sense-->
+                                    <col /> <!--MH: hidden as this colum does not make sense-->
+                                    <col />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Name
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Field/Area
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Materials Types
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Methods
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Properties
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Tools
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Responsible Group
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Institute/Affiliation
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Total Entries
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Active
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Description
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://open-dac.github.io/" rel="nofollow">
+                                                            OpenDAC
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://open-dac.github.io/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116391996.gif" alt="openDAC logo" width="37">
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials science, AI, ML, and environmental engineering
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Metal Organic Frameworks (MOFs), CO2, H2O adsorbates
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, High-Throughput DFT, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Electronic, Adsorption Energies, Structural, Thermodynamic Properties
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            ODAC23 Dataset, Leaderboards, ML Task Frameworks,
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Fundamental AI Research (FAIR) at Meta and Researchers at Georgia Tech
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://aidemos.meta.com/" rel="nofollow" title="">
+                                                Meta AI (FAIR)
+                                            </a>
+                                            and
+                                            <a href="https://www.gatech.edu/" rel="nofollow" title="">
+                                                Georgia Institute of Technology
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <br />
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            OpenDAC, a collaboration between Meta AI's FAIR and Georgia Tech,
+                                            provides the ODAC23 dataset and ML tasks to accelerate AI-driven
+                                            discovery of cost-effective sorbent materials for Direct Air
+                                            Capture (DAC), advancing carbon dioxide removal technologies.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://zenodo.org/" rel="nofollow">
+                                                            zenodo
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://zenodo.org/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116391993.png" alt="zenodo logo"
+                                                                    width="96" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Multidisciplinary, including science, social sciences, and humanities
+                                            but highlighted here only about Materials science
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                Nanomaterials, alloys, crystals, polymers, metal-organic frameworks
+                                                (MOFs)
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, MBPT, DFPT, Transport, ML, XRD
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Electronic, Mechanical, Thermodynamic, Adsorption Energies, Structural,
+                                            Spectroscopic Properties
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Web Interface, RESTful and OAI-PMH APIs, GitHub Integration
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Zenodo team, supported by the OpenAIRE consortium and CERN's Digital
+                                            Repositories Section
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://home.cern/" rel="nofollow" title="">
+                                                European Organization for Nuclear Research (CERN)
+                                            </a>
+                                            , and
+                                            <a href="https://www.openaire.eu/" rel="nofollow" title="">
+                                                OpenAIRE
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong>
+                                                3
+                                            </strong>
+                                            million documents
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Zenodo, operated by CERN and OpenAIRE, is a free, open-access repository
+                                            for sharing citable research outputs across all disciplines, assigning
+                                            DOIs,
+                                            supporting FAIR principles
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/elejeune11/Mechanical-MNIST"
+                                                            rel="nofollow">
+                                                            Mechanical-MNIST
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://github.com/elejeune11/Mechanical-MNIST"
+                                                        rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116391999.png"
+                                                                alt="Mechanical-MNIST logo" width="75" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Mechanical engineering, materials science, and computational mechanics
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Neo-Hookean Materials, Heterogeneous Composites
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Computer-aided design (CAD), Finite element methods (FEM),
+                                            Bitmap-to-Material Mapping, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Mechanical properties, Dynamic properties (natural frequencies, damping
+                                            ratios, modal masses)
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://github.com/elejeune11/Mechanical-MNIST/tree/master/generate_dataset"
+                                                rel="nofollow" title="">
+                                                FEniCS Scripts
+                                            </a>
+                                            , Meta-Modeling Scripts, Visualization
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Mechanical-MNIST Team and The Lejeune Lab, led by Prof.
+                                            <a href="https://www.bu.edu/eng/profile/emma-lejeune/" rel="nofollow"
+                                                title="">
+                                                Emma Lejeune
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.bu.edu/eng/academics/departments-and-divisions/mechanical-engineering/"
+                                                rel="nofollow" title="">
+                                                Department of Mechanical Engineering, Boston University
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                70000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Mechanical-MNIST is an open-access dataset of 70,000 FEniCS-based finite
+                                            element simulations
+                                            of heterogeneous Neo-Hookean materials derived from MNIST bitmaps,
+                                            supporting meta-modeling
+                                            for mechanical behavior under various load conditions.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <a href="https://acdc.alcf.anl.gov/mdf/detail/foam_db_v1.1/"
+                                                        rel="nofollow" title="">
+                                                        <strong>
+                                                            FOAM
+                                                        </strong>
+                                                    </a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://acdc.alcf.anl.gov/mdf/detail/foam_db_v1.1/"
+                                                        rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116392000.png" alt="FOAM logo"
+                                                                width="119" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Materials science, additive manufacturing, metallurgy, and computational
+                                            materials design
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Open-Cell Metal Foams, Heterogeneous Cellular Structures
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            MD ML, X-ray Computed Tomography (XCT), Finite Element Analysis (FEA),
+                                            Microstructural Reconstruction
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Mechanical, Material Descriptors, Microstructural Properties
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            MDF’s faceted search, DREAM.3D
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            FOAM Development Team including Michael Groeber, Edwin Schwalbach
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.afrl.af.mil/" rel="nofollow" title="">
+                                                Air Force Research Laboratory (AFRL)
+                                            </a>
+                                            ,
+                                            <a href="https://www.alcf.anl.gov/" rel="nofollow" title="">
+                                                Argonne Leadership Computing Facility (ALCF)
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <br />
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            The FOAM Database is an open-source dataset hosted by the MDF at ALCF,
+                                            providing 3D
+                                            microstructural and mechanical property data for additively manufactured
+                                            metallic
+                                            foams to support materials science research and simulations.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://fair-chem.github.io/" rel="nofollow">
+                                                            FAIR-Chem
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://fair-chem.github.io/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116392005.png" alt="FAIR-Chem logo"
+                                                                    width="86" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials science, quantum chemistry, computational chemistry, and
+                                            machine learning
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Crystalline solids, Metal-Organic Frameworks (MOFs), Organic and
+                                            Inorganic Molecules, Polymers
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, MD, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Electronic, Thermodynamic, Adsorption Energies, Structural Properties
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://fair-chem.github.io/autoapi/index.html" rel="nofollow"
+                                                title="">
+                                                FAIRChem package (fairchem-core, fairchem-data-oc,
+                                                fairchem-demo-ocpapi), OCPCalculator for ASE integration
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Meta AI’s FAIR Chemistry team, including contributors like
+                                            <a href="https://scholar.google.com/citations?user=lphfYeIAAAAJ&amp;hl=en"
+                                                rel="nofollow" title="">
+                                                Muhammed Shuaibi
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://ai.meta.com/research/" rel="nofollow" title="">
+                                                Meta AI’s Fundamental AI Research (FAIR)
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                1000000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            FAIR-Chem is an open-source repository of datasets, ML models, and
+                                            workflows for advancing
+                                            materials science and quantum chemistry, supporting simulations and
+                                            discovery in catalysis
+                                            and inorganic materials. It contains subdatasets like
+                                            <strong title="">
+                                                <a href="https://fair-chem.github.io/core/datasets/oc20.html"
+                                                    rel="nofollow">
+                                                    OC20
+                                                </a>
+                                                ,
+                                                <a href="https://fair-chem.github.io/core/datasets/oc22.html"
+                                                    rel="nofollow">
+                                                    OC22
+                                                </a>
+                                                ,
+                                                <a href="https://fair-chem.github.io/core/datasets/odac.html"
+                                                    rel="nofollow">
+                                                    ODAC23
+                                                </a>
+                                                , and
+                                                <a href="https://fair-chem.github.io/core/datasets/omat24.html"
+                                                    rel="nofollow">
+                                                    OMat24
+                                                </a>
+                                            </strong>
+                                            <a href="https://fair-chem.github.io/" rel="nofollow" title="">
+                                                and more
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/google-deepmind/materials_discovery"
+                                                            rel="nofollow">
+                                                            GNoME
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://github.com/google-deepmind/materials_discovery"
+                                                        rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116392004.png" alt="GNoME logo"
+                                                                width="112" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Materials science, computational chemistry, inorganic crystal discovery,
+                                            and machine learning
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Inorganic Crystals, Transition Metal Compounds
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, ML
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Electronic, Thermodynamic, Optical Properties
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Colab notebooks, Nequip (JAX implementation), github datasets
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://deepmind.google/about/" rel="nofollow" title="">
+                                                Google DeepMind Team
+                                            </a>
+                                            including Amil Merchant and Ekin Dogus Cubuk
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://deepmind.google/about/" rel="nofollow" title="">
+                                                Google DeepMind
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                520000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            GNoME is an open-source dataset of inorganic crystal structures,
+                                            including 381,000 novel
+                                            stable materials, with DFT-calculated energies and properties, enabling
+                                            large-scale
+                                            materials discovery and simulations for applications like batteries and
+                                            electronics.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://figshare.com/articles/dataset/MAST-ML_Education_Datasets/7017254"
+                                                            rel="nofollow">
+                                                            MAST-ML
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://figshare.com/articles/dataset/MAST-ML_Education_Datasets/7017254"
+                                                        rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116392002.png" alt="MAST-ML logo"
+                                                                width="73" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials Science, Machine Learning, Computational Materials Design, and
+                                            Materials Informatics
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Crystalline materials, Alloys, Perovskite, Metallic Glasses
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Electronic, Mechanical Properties
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Formatted for MAST-ML (Materials Simulation Toolkit - Machine Learning),
+                                            <a href="https://github.com/uw-cmg/MAST-ML" rel="nofollow" title="">
+                                                github
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Ryan Jacobs, Daniel Sauceda, and James Cumby
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.wisc.edu/" rel="nofollow" title="">
+                                                University of Wisconsin-Madison
+                                            </a>
+                                            (
+                                            <a href="https://engineering.wisc.edu/departments/materials-science-engineering/"
+                                                rel="nofollow" title="">
+                                                Department of Materials Science and Engineering
+                                            </a>
+                                            ) and
+                                            <a href="https://www.ed.ac.uk/" rel="nofollow" title="">
+                                                University of Edinburgh
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <br />
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            MAST-ML Education Datasets are open-source collections of materials
+                                            science data (dilute
+                                            solute diffusion, perovskite stability, and metallic glasses) designed
+                                            for machine
+                                            learning education and property prediction using the MAST-ML toolkit.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://huggingface.co/DeepChem" rel="nofollow">
+                                                            DeepChem
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://huggingface.co/DeepChem" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116392006.png" alt="DeepChem logo"
+                                                                width="107" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Computational Quantum Chemistry, Materials Science, Drug Discovery, and
+                                            Machine Learning
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <span title="">
+                                                Organic and inorganic molecules including drugs, toxins
+                                                <br />
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <span title="">
+                                                ML, Molecular Featurization
+                                                <br />
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <span title="">
+                                                Molecular Properties
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://huggingface.co/docs/transformers/en/main_classes/feature_extractor"
+                                                rel="nofollow" title="">
+                                                HuggingFaceFeaturizer
+                                            </a>
+                                            ,
+                                            <a href="https://huggingface.co/DeepChem/SmilesTokenizer_PubChem_1M"
+                                                rel="nofollow" title="">
+                                                SmilesTokenizer
+                                            </a>
+                                            ,
+                                            <a href="https://deepchem.io/tutorials/transfer-learning-with-chemberta-transformers/"
+                                                rel="nofollow" title="">
+                                                ChemBERTa
+                                            </a>
+                                            ,
+                                            <a href="https://github.com/deepchem/deepchem" rel="nofollow" title="">
+                                                github DeepChem
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DeepChem community including Bharath Ramsundar, Peter Eastman, Patrick
+                                            Walters
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Initially Stanford University, now a community-driven project
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                1000000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DeepChem is an open-source repository of datasets and ML models for
+                                            computational
+                                            chemistry and drug discovery, enabling molecular property prediction and
+                                            simulations
+                                            with tools like SmilesTokenizer and HuggingFaceFeaturizer.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://pages.nist.gov/jarvis_leaderboard/"
+                                                            rel="nofollow">
+                                                            JARVIS-Leaderboard
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://pages.nist.gov/jarvis_leaderboard/"
+                                                            rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116392003.png"
+                                                                    alt="JARVIS-Leaderboard" width="100" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials Science, AI, ML, electronic structure, force-field
+                                            simulations, quantum
+                                            computation, and experimental materials research
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                Crystalline solids, Metal-Organic Frameworks (MOFs), Organic and
+                                                inorganic molecules
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                DFT, Classical Force Fields (FF), ML
+                                                <br />
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                Electronic, Adsorption, Mechanical, Structural, Thermodynamic
+                                                Properties
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            GitHub Actions for automated testing,
+                                            <a href="https://github.com/mkdocs/mkdocs" rel="nofollow" title="">
+                                                mkdocs
+                                            </a>
+                                            for visualization,
+                                            <a href="https://github.com/usnistgov/jarvis" rel="nofollow" title="">
+                                                JARVIS-Tools
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Kamal Choudhary, Daniel Wines, Kevin Garrity, Aldo Romero, Jaron Krogel,
+                                            Kayahan Saritas, Panchapakesan Ganesh
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.nist.gov/" rel="nofollow" title="">
+                                                National Institute of Standards and Technology (NIST), USA
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                80000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            JARVIS-Leaderboard is an open-source platform for benchmarking materials
+                                            science methods
+                                            (AI, ML, DFT, force-fields, quantum computation, experiments) using
+                                            JARVIS-Tools datasets
+                                            to ensure reproducibility and transparency in materials design.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://matterverse.ai/" rel="nofollow">
+                                                            Matterverse.ai
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://matterverse.ai/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116392001.png" alt="Matterverse.ai logo"
+                                                                width="110" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Materials science, computational chemistry, machine learning, and
+                                            inorganic materials discovery
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Crystalline Solids,
+                                            <a href="https://next-gen.materialsproject.org/" rel="nofollow">
+                                                Materials Project
+                                            </a>
+                                            Structures
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, ML
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Electronic,
+                                            <span title="">
+                                                Mechanical
+                                            </span>
+                                            , Thermodynamic, Optical Properties
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            OPTIMADE API,
+                                            <a href="https://github.com/materialsvirtuallab/m3gnet" rel="nofollow"
+                                                title="">
+                                                M3GNet
+                                            </a>
+                                            ,
+                                            <a href="https://matterverse.ai/about" rel="nofollow" title="">
+                                                web interface
+                                            </a>
+                                            ,
+                                            <a href="http://materialsvirtuallab.org/" rel="nofollow" title="">
+                                                materialsvirtuallab
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Chi Chen, Shyue Ping Ong, and the Materials Virtual Lab team
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://ucsd.edu/" rel="nofollow" title="">
+                                                University of California San Diego
+                                            </a>
+                                            (
+                                            <a href="https://jacobsschool.ucsd.edu/" rel="nofollow" title="">
+                                                Jacobs School of Engineering
+                                            </a>
+                                            ) and
+                                            <a href="https://materialsvirtuallab.org/" rel="nofollow" title="">
+                                                Materials Virtual Lab
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                180000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Matterverse.ai developed by the Materials Virtual Lab at UC San Diego,
+                                            is a database
+                                            (not completely free) of over 31 million hypothetical materials with
+                                            M3GNet-predicted
+                                            properties, facilitating AI-driven discovery of novel materials for
+                                            technological applications.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="http://Quantum-Machine.org" rel="nofollow">
+                                                            Quantum-Machine.org
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="http://quantum-machine.org/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116391995.png" alt="Quantum-Machine.org"
+                                                                width="87" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Computational Quantum Chemistry,  and Quantum Machine Learning for
+                                            molecular property prediction
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Organic and Organometallic Compounds,
+                                            <a href="https://www.crystallography.net/cod/" rel="nofollow">
+                                                COD
+                                            </a>
+                                            structures
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                DFT, DFPT, ML
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                Electronic, Geometric, Thermodynamic, Spectroscopic Properties
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.sgdml.org/" rel="nofollow" title="">
+                                                sGDML
+                                            </a>
+                                            ,
+                                            <a href="https://github.com/atomistic-machine-learning/schnetpack"
+                                                rel="nofollow" title="">
+                                                SchNetPack
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            QMO Team including O. Anatole von Lilienfeld, Klaus-Robert Müller,
+                                            Alexandre Tkatchenko, Matthias Rupp, and others
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Various institutions, including
+                                            <a href="https://www.unibas.ch/en.html" rel="nofollow" title="">
+                                                University of Basel
+                                            </a>
+                                            ,
+                                            <a href="https://www.tu.berlin/" rel="nofollow" title="">
+                                                TU Berlin
+                                            </a>
+                                            , and
+                                            <a href="https://www.fhi.mpg.de/de" rel="nofollow" title="">
+                                                Fritz Haber Institute
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                7000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Quantum-Machine.org is an open-source repository of datasets (e.g.,
+                                            <a href="http://quantum-machine.org/datasets/" rel="nofollow" title="">
+                                                QM7
+                                            </a>
+                                            ,
+                                            <a href="https://paperswithcode.com/dataset/qm9" rel="nofollow" title="">
+                                                QM9
+                                            </a>
+                                            ) and software (e.g., sGDML, SchNetPack) for accelerating quantum
+                                            machine learning and quantum chemistry simulations.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://moleculenet.org/" rel="nofollow">
+                                                            MoleculeNet
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://moleculenet.org/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116391998.png" alt="MoleculeNet logo"
+                                                                    width="103" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Molecular machine learning, computational chemistry, drug discovery,
+                                            materials science, biophysics
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Organic Molecules, Organometallic Compounds, Biomolecules, Drug-like
+                                            Molecules, Organic photovoltaic materials
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, ML, Data Splitting and Benchmarking
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <span title="">
+                                                Electronic, Chemical, Biophysical, Physiological Properties
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://deepchem.io/" rel="nofollow" title="">
+                                                DeepChem library
+                                            </a>
+                                            ,
+                                            <a href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html"
+                                                rel="nofollow" title="">
+                                                MolGraphConvFeaturizer
+                                            </a>
+                                            , dataset loaders (load_qm9, load_tox21)
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DeepChem community, including Zhenqin Wu, Bharath Ramsundar, Evan N.
+                                            Feinberg, Joseph Gomes, and others
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Initially Stanford University, now a community-driven project with
+                                            contributions from various institutions
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                700000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            MoleculeNet, part of the DeepChem library, is an open-source
+                                            benchmarking framework for
+                                            molecular machine learning, providing curated datasets, evaluation
+                                            metrics, and ML
+                                            algorithms for predicting molecular properties in chemistry and drug
+                                            discovery.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/AIRI-Institute/nablaDFT"
+                                                            rel="nofollow">
+                                                            nablaDFT
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/AIRI-Institute/nablaDFT"
+                                                            rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116391997.png" alt="nablaDFT logo"
+                                                                    width="68" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Computational quantum chemistry, molecular machine learning, drug
+                                            discovery, and chemical science
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Organic Molecules, Drug-like Molecules
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <span title="">
+                                                Electronic, Structural, Molecular Properties, Conformational Data
+                                                <br />
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            HamiltonianDatabase and ASENablaDFT, model_registry
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            nablaDFT Team including Kuzma Khrabrov, Ilya Shenbin, Alexander Ryabov,
+                                            Artem Tsypin
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Artificial Intelligence Research Institute (AIRI), Russia
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                190000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            nablaDFT is an open-source dataset and benchmark containing
+                                            DFT-calculated properties,
+                                            designed for training and evaluating neural network potentials in
+                                            quantum chemistry and drug discovery.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/openmm/spice-dataset"
+                                                            rel="nofollow">
+                                                            SPICE
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://github.com/openmm/spice-dataset" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/116391994.jpg" alt="SPICE logo"
+                                                                width="42" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Computational Chemistry, Molecular ML, drug discovery, and
+                                            protein-ligand interactions
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Organic Molecules, Drug-like Molecules, Biomolecules, Organic-Inorganic
+                                            Hybrids, Water Cluster
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, ML
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <span title="">
+                                                Electronic, Structural, Chemical, Interaction Properties
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            OpenFF-QCSubmit, QCFractal, Psi4 for QM calculations,
+                                            createSpiceDataset.py for TorchMD-Net compatibility
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            SPICE Team including Peter Eastman, Pavan Kumar Behara, David L. Dotson,
+                                            Raimondas Galvelis, John E. Herr
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            OpenMM, OpenFF, MolSSI, and collaborating institutions like Stanford
+                                            University and Memorial Sloan Kettering Cancer Center
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                110000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p title="">
+                                                SPICE, developed by the OpenMM team, is an open-source dataset of
+                                                over 1.1 million quantum
+                                                mechanical conformations for drug-like molecules and peptides,
+                                                designed for training machine
+                                                learning potentials in molecular simulations.
+                                            </p>
+                                            <p title="">
+                                                <br />
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/divelab/AIRS" rel="nofollow">
+                                                            AIRS
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/divelab/AIRS" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/116392007.png" alt="AIRS logo"
+                                                                    width="44" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Cheminformatics, Computational Quantum Chemistry, Materials Science, and
+                                            AI for scientific discovery
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Organic Molecules, Inorganic Materials, Biomolecules, Organic-Inorganic
+                                            Hybrids
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, MD, ML
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Electronic, Structural, Thermodynamic, Physical, Biological, Properties
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            PotNet, ComENet, GraphBP, SineNet, LatentDiff, QH9 Dataset/Benchmark
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DIVE (Data Integration, Visualization, and Exploration) Lab Development
+                                            Team
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://github.com/divelab" rel="nofollow" title="">
+                                                DIVE Lab
+                                            </a>
+                                            ,
+                                            <a href="https://www.tamu.edu/index.html" rel="nofollow" title="">
+                                                Texas A&amp;M University
+                                            </a>
+                                            ,
+                                            <a href="https://engineering.tamu.edu/cse/index.html" rel="nofollow"
+                                                title="">
+                                                Department of Computer Science and Engineering
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                134000
+                                            </strong>
+                                            +
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                AIRS is an open-source and aids AI-driven scientific discovery in
+                                                quantum and continuum
+                                                systems. It handles tasks like molecular property modeling with
+                                                tools like PotNet and
+                                                ComENet, integrating with PyTorch Geometric and JARVIS for
+                                                researchers in materials
+                                                science and computational physics.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- MH: you can introduce here new card and add content if needed  -->
+                        <div class="card"> 
+                        </div>
+                        <p>
+                            <br />
+                        </p>
+                        <div>
+                            Created by
+                            <span>
+                                Manoar Hossain
+                            </span>
+                            <!-- Added latest update date & time = starts -->
+                            <footer>
+                                <p id="last-update"></p>
+                            </footer>
+                            <script>
+                                document.getElementById('last-update').textContent = "Last updated: " + document.lastModified;
+                            </script>
+                            <!-- Added latest update date & time = ends -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" role="contentinfo">
+                <section>
+            </div>
+            </section>
+        </div>
+    </div>
+    <!--MH: this script is for collapsable/expandable section---------------------starts-->
+    <script>
+        function toggleThisExpander(button) {
+            var content = button.parentElement.nextElementSibling;
+            var expanded = button.getAttribute('aria-expanded') === 'true';
+            if (expanded) {
+                content.style.display = 'none';
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                content.style.display = 'block';
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+    </script>
+    <!--MH: this script is for collapsable/expandable section---------------------ends-->
+</body>
+
+</html>

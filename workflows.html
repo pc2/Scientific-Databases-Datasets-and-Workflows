@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('./logos/UPB_bg.png');
+            /*MH: Replace with the path to your image */
+            background-size: 500px 500px;
+            /*MH: Scales the image to cover the entire background */
+            background-position: center;
+            /*MH: Centers the image */
+            background-repeat: repeat;
+            /*MH: Prevents/allow the image from repeating */
+            /*background: #4c9fa7; /*MH: background color of entire page(see the color behind the text, table etc)*/
+            margin: 0;
+            padding: 0;
+        }
+
+        /*MH: This puts the logo in the top-right INSIDE the card area ------starts*/
+        /* #main-header {
+            position: relative;
+        } */
+        /* Layout for header */
+        #main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* left–center–right */
+            padding: 10px 20px; /* spacing inside header */
+            position: relative;
+        }
+        .in-card-logo {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            height: 70px; /*MH: scale or adjust as you like */
+            width: auto;
+            z-index: 10;
+            box-shadow: none;
+        }
+        #title-heading {
+            text-align: center; /* Or left, if you prefer */
+            margin-top: 80px;   /* Leaves space so the logo doesn't overlap title */
+            /* You can adjust margin-top if you make the logo bigger/smaller */
+        }
+        /*MH: This puts the logo in the top-right INSIDE the card area ------ends*/
+
+        /*-------------------------------------------------------------starts*/
+        /*MH: this part will hide column mention in the parentheses ()*/
+        col:nth-child(9) {
+            display: none;
+        }
+        th:nth-child(9),
+        td:nth-child(9) {
+            display: none;
+        }
+        /*-------------------------------------------------------------ends*/
+
+        /* Card for main text content */
+        .card {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            /*MH: text background color*/
+            color: #222020;
+            /*MH: text color*/
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 30px 30px 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 20px 0 rgba(60, 80, 180, 0.07), 0 1.5px 5px 0 rgba(60, 80, 180, 0.08);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #5d5f12;
+            /*MH: title text color*/
+            font-weight: 700;
+            /*MH: title text width */
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            border-bottom: 2px solid #757c12;
+            /*MH: underline color of title*/
+            padding-bottom: .1em;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: #6b7880;
+        }
+
+        h3 {
+            font-size: 1.15em;
+            color: #265772;
+        }
+
+        ul,
+        ol {
+            margin-left: 2em;
+        }
+
+        a {
+            color: #1c6ddd;
+            /*MH: link text color*/
+            text-decoration: none;
+            border-bottom: none; /*1px dotted #ffffff;*/
+            /*MH: color of link underline*/
+            transition: border 0.1s;
+        }
+
+        a:hover {
+            color: #230397;
+            /*MH: color when the mouse is over the link*/
+            border-bottom: 2px solid #ec1bb8;
+            /*MH: color underline of link for mouse hover*/
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 8px 0;
+            /* box-shadow: 0 1px 4px 0 rgba(74, 73, 153, 0.08); */ /*MH: this create a box shadow*/
+            box-shadow: none; 
+        }
+
+        /*MH: Properties of the table ------------------------------starts*/
+        /* Wide, full-view table with scroll if needed */
+        .fullwidth-table-outer {
+            width: 100vw;
+            /* Full viewport width */
+            box-sizing: border-box;
+            /* Includes padding/borders in width */
+            overflow-x: auto;
+            /* Horizontal scrollbar for wide table */
+            height: 80vh;
+            /* Fixed height to 80% of viewport height */
+            /* margin: 2em 0; */
+            margin: 2em auto;
+            /* Top/bottom margins */
+            background: none;
+            display: block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            /* Center the container */
+            padding: 0;
+        }
+
+        .fullwidth-table-outer table {
+            margin: 0 auto;
+            /* Center table */
+            min-width: 1200px;
+            /* Wider table to ensure horizontal scroll */
+            max-width: 98vw;
+            /* Limit width to viewport */
+            border-collapse: separate;
+            border-spacing: 0;
+            background: #dff7f8;
+            /*MH: color of even row of table*/
+            border-radius: 12px;
+            box-shadow: 0 1px 6px 0 rgba(40, 60, 120, 0.04);
+            text-align: left;
+            font-size: 1.05em;
+        }
+
+        .fullwidth-table-outer thead th,
+        .fullwidth-table-outer tr:first-child {
+            position: sticky;
+            /* Keep header fixed */
+            top: 0;
+            /* Stick to top of container */
+            background: #f1eeee;
+            /* Light gray background for clarity */
+            z-index: 1000;
+            /* Stay above rows */
+            /* will-change: transform;    */
+            /* hint to browsers */
+            /* backface-visibility: hidden;     */
+            /* reduce FF flicker */
+        }
+
+        .fullwidth-table-outer th,
+        .fullwidth-table-outer td {
+            padding: 14px 14px;
+            border-bottom: 1px solid #4b759c;
+            /*MH: color of horizontal line of table*/
+            border-right: 1px solid #4b759c;
+            /*MH: color of vertical line of table*/
+        }
+
+        .fullwidth-table-outer th {
+            background: linear-gradient(90deg, #e366e7 0%, #e3ec93 100%);
+            /*MH: color of heading of table (two colors for gradient)*/
+            color: #142f47;
+            /*text color of table heading*/
+            border-bottom: 2px solid #185b9eb7;
+            /*bottom line of heading of table*/
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .fullwidth-table-outer tbody tr:nth-child(even) {
+            background-color: #ffffee;
+            /*MH: color of zebra table odd row*/
+        }
+
+        .fullwidth-table-outer tbody tr {
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s, border-left 0.2s;
+        }
+
+        .fullwidth-table-outer tbody tr:hover {
+            background: #ade6df;
+            /*MH: darker for even rows on hover*/
+            box-shadow: 0 4px 12px rgba(40, 60, 120, 0.15);
+            /*MH: Floating effect on hover*/
+            /* animation: floatUpDown 1.5s ease-in-out infinite; /*MH: Animation for up and down float */
+            transform: translateY(-2px);
+            /*MH: Lift row for floating effect*/
+            border-left: 4px solid #f2aef7;
+            /*MH: Enhanced highlight*/
+        }
+
+        .fullwidth-table-outer tbody tr:nth-child(even):hover {
+            background: #dfdfc6;
+            /*MH: darker color for odd rows on hover*/
+            box-shadow: 0 4px 12px rgba(40, 60, 120, 0.15);
+            /*MH: Floating effect on hover*/
+            /* animation: floatUpDown 1.5s ease-in-out infinite; /*MH: Animation for up and down float */
+            transform: translateY(-2px);
+            /*MH: Lift row for floating effect*/
+            border-left: 4px solid #f2aef7;
+            /*MH: Enhanced highlight*/
+        }
+        /*MH: Properties of the table ------------------------------ends*/
+
+        /* p { */
+        p:not(table p) {
+            text-align: justify;  /*MH: This make the text even from both left and right side*/
+        }
+
+        /*MH: This part takes care of the expandable/collapsable part----------------starts*/ 
+        .expander {
+            margin-bottom: 8px; /* Adds space between each expander section */
+        }
+        .expander button {
+            background-color: #f5e39b;  /*MH: button color of expandable/collapsable*/
+            color: #333;                /*MH: Text color */
+            border: none;                 /*MH: Remove border */
+            border-radius: 6px;           /*MH: Rounded corners */
+            padding: 10px 20px;           /*MH: Space inside button */
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s; 
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px 0 rgba(15, 34, 117, 0.16); /*MH: Shadow added to the button */
+        }
+        .expander button:hover {
+            background-color: #b6a354;  /*MH: color on hover */
+            box-shadow: 0 4px 16px 0 rgba(20, 50, 139, 0.2); /*MH: Deeper shadow on hover */
+            transform: translateY(-2px); /*MH: Makes the button float upwards */
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .expander-content {
+            border: 2px solid #d4b020;           /*MH: color of the border */
+            background: #e1f5f3;                 /*MH: color of background */
+            border-radius: 40px 41px 38px 43px / 46px 49px 45px 41px; /*MH: make rounded boarder*/
+            /* border-radius: 8px;  */
+            padding: 16px 20px;
+            margin-top: 14px;
+            position: relative;                  /* Needed for the arrow */
+            box-shadow: 0 2px 8px rgba(15,34,117,0.08);
+        }
+        .expander-content::before {
+            content: "";
+            position: absolute;
+            top: -16px; 
+            left: 30px;    /*MH: arrow at the box*/
+            /* transform: translateX(-50%); */
+            width: 0;
+            height: 0;
+            border-left: 13px solid transparent;
+            border-right: 13px solid transparent;
+            border-bottom: 16px solid #e6c130;   /*MH: Arrow color matches border */
+        }
+        .expander-content::after {
+            content: "";
+            position: absolute;
+            top: -13px;
+            left: 30px;    /*MH: arrow at the box*/
+            /* transform: translateX(-50%); */
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 13px solid #e1f5f3;   /*MH: Arrow color matches box background */
+        }
+        /*MH: This part takes care of the expandable/collapsable part----------------ends*/ 
+
+        /*MH: This part will split in the page and make it double column------------starts*/
+        .content-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px; /*MH: space between text and image */
+        }
+        .content-left {
+            flex: 1;
+            min-width: 0;
+        }
+        .content-right img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 8px;
+        }
+        @media (max-width: 900px) {
+            .content-layout {
+                flex-direction: column;
+            }
+            .content-right img {
+                margin-top: 20px;
+                max-width: 100%;
+            }
+        }
+        /*MH: This part will split in the page and make it double column------------ends*/
+
+    </style>
+    <title>
+        Materials-Science-Workflows.html
+    </title>
+</head>
+
+<body>
+    <header style="font-size:2.0em;
+                   font-weight:600;
+                   letter-spacing:1px;
+                   color:#efd110; 
+                   margin-bottom:1.0em; 
+                   text-align:center;
+                   padding-top:40px;"> <!--MH: adjust position of the header text-->
+        PC<sup>2</sup> presents <!--MH: Put header title here and color is defined just few lines above-->
+    </header>
+    <div class="card">
+        <div id="page">
+            <div id="main">
+                <div id="main-header">
+                    <!-- <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li>
+                                <span>
+                                    <a href="index.html">
+                                        PC2 presents
+                                    </a>
+                                </span>
+                            </li>
+                        </ol>
+                    </div> -->
+                    <h1 id="title-heading">
+                        <span id="title-text">
+                            Materials Science Workflows
+                        </span>
+                    </h1>
+                    <img src="./logos/pc2_logo_2.png" alt="PC2 Logo" class="in-card-logo">
+                </div>
+                <div id="content">
+                    <div id="main-content">
+                        <p>
+                            <strong>
+                                Introduction:
+                            </strong>
+                        </p>
+                        <p>
+                            In the rapidly evolving field of materials science (including physics, chemistry,
+                            nanotechnology, and data science), computational workflows have become indispensable for
+                            automating, managing, and analyzing complex simulations to accelerate materials
+                            discovery and design. These workflows, ranging from flexible simulation environments to
+                            robust high-throughput automation systems, enable researchers to efficiently handle
+                            atomistic calculations, such as density functional theory (DFT), molecular dynamics
+                            (MD), and machine learning (ML)/artificial intelligence (AI) driven predictions.
+                            Open-source workflow systems provide modular, scalable solutions that integrate with
+                            popular computational codes and support diverse applications, from small-scale studies
+                            to large-scale materials screening. The following table summarizes the prominent
+                            open-source workflows, detailing their field of application, development teams,
+                            supported simulations, and key features. This compilation serves as a guide for
+                            researchers to select the most suitable workflow for their computational needs,
+                            fostering reproducible, data-driven advancements in materials science.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <strong>
+                                Motivation:
+                            </strong>
+                        </p>
+                        <p>
+                            Computational workflows are critical because they streamline repetitive tasks, reduce
+                            human error, and enable the processing of vast datasets, which are essential for
+                            discovering new materials with tailored properties. By automating simulations and
+                            ensuring data provenance, these tools enhance reproducibility, accelerate research
+                            cycles, and facilitate collaboration across disciplines. In an era of big data and
+                            AI-driven discovery, workflows empower researchers to tackle complex challenges—such as
+                            designing sustainable energy materials or advanced semiconductors—efficiently and
+                            cost-effectively, making them vital for scientific and technological breakthroughs.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <strong>
+                                Purpose:
+                            </strong>
+                        </p>
+                        <p>
+                            This table compiles prominent open-source and free to use computational workflows to
+                            guide researchers in selecting tools that best fit their simulation needs, whether for
+                            small-scale prototyping or large-scale high-throughput screening. It provides a concise
+                            overview of each workflow's applications, supported simulations, scalability, and unique
+                            features, enabling users to compare options and adopt solutions that enhance
+                            productivity and reproducibility. Designed for materials scientists, physicists,
+                            chemists, and data scientists, this resource aims to foster data-driven advancements by
+                            promoting accessible, community-supported tools.
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <!--------------------------------------------------------->
+                        <div class="content-layout">
+                            <div class="content-left">
+                                <p>
+                                    <strong>
+                                        Key Term Definitions:
+                                    </strong>
+                                </p>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Workflow 
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            A workflow is a structured sequence of computational tasks and processes designed 
+                                            to conduct simulations and analyses systematically. It involves steps such as setup, 
+                                            execution, and post-processing of simulations, ensuring efficiency, reproducibility, 
+                                            and accuracy in scientific research.
+                                            <a href="https://www.ibm.com/think/topics/workflow" rel="nofollow">
+                                                IBM - Workflow
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            High-throughput
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            High-throughput refers to the automated process of screening and analyzing
+                                            a large number of samples or materials or data points efficiently and
+                                            systematically. In various scientific contexts, such as in genomics,
+                                            pharmaceuticals, and materials science, high-throughput techniques allow
+                                            researchers to conduct experiments and collect data on a massive scale,
+                                            accelerating the discovery and analysis processes. High-throughput
+                                            screening (HTS), for example, is a method used in drug discovery to
+                                            quickly assess the biological or biochemical activity of a large number
+                                            of compounds.
+                                            <a href="https://en.wikipedia.org/wiki/High-throughput_screening" rel="nofollow">
+                                                High-Throughput Screening - Wikipedia
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            FAIR Principles
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            FAIR principles are basically a set of guidelines designed to ensure data is
+                                            Findable, Accessible, Interoperable, and Reusable (FAIR), promoting
+                                            efficient
+                                            data sharing and reproducibility in scientific research, particularly in
+                                            materials science and other data-driven fields.
+                                            <a href="https://www.go-fair.org/fair-principles/" rel="nofollow">
+                                                FAIR Principles - GO FAIR
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Data Provenance
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Data provenance, often referred to as data lineage, is the documentation of
+                                            the origin, movement, and transformation of data throughout its
+                                            lifecycle—from
+                                            creation or capture to storage, analysis, and ultimately, final use or
+                                            sharing.
+                                            It provides a record of where data comes from, how it is processed, and what
+                                            happens to it over time. This information is crucial for ensuring data
+                                            integrity, reproducibility, and trustworthiness.
+                                            <a href="https://en.wikipedia.org/wiki/Data_lineage#Data_provenance" rel="nofollow">
+                                                Data Provenance - Wikipedia
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Big Data
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Big Data refers to extremely large and complex datasets that cannot be
+                                            effectively processed or analyzed using traditional data processing tools
+                                            and methods. It is characterized by the "3 Vs" (Volume, Velocity, Variety)
+                                            and often extended to include Veracity and Value.
+                                            <a href="https://en.wikipedia.org/wiki/Big_data" rel="nofollow">
+                                                Wikipedia - Big Data
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="expander">
+                                    <div role="heading">
+                                        <button aria-expanded="false" type="button" onclick="toggleThisExpander(this)">
+                                            Meta Data
+                                        </button>
+                                    </div>
+                                    <div class="expander-content" role="region" style="display: none;">
+                                        <p>
+                                            Metadata is data that provides information about other data, describing
+                                            its characteristics, structure, or context to facilitate its management,
+                                            discovery, and use. Often referred to as "data about data," metadata
+                                            includes details such as the data's source, format, size, creation date,
+                                            author, location, or permissions.
+                                            <a href="https://en.wikipedia.org/wiki/Metadata" rel="nofollow">
+                                                Wikipedia - Metadata
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+			    <!--
+                            <div class="content-right">
+                                <img src="./logos/workflow_cartoon.jpg" alt="Workflow cartoon"> 
+			    </div> -->
+			    <div class="content-right">
+                                <img src="./logos/workflow_cartoon.jpg" alt="Workflow cartoon">
+
+                                <div style="font-size: 0.9em; color: #8ea9b9; margin-top: 4px;">
+                                  Figure: Workflow (
+                                  <a href="https://www.alamy.de/stockfoto-halber-kopf-menschliche-gehirn-idee-konzept-138145776.html"
+                                     style="color: #8ea9b9; text-decoration: none;"
+                                     target="_blank"
+                                     rel="noopener noreferrer">
+                                     credit
+                                  </a>
+                                  )
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <br />
+                        </p>
+                        <p>
+                            <br />
+                        </p>
+                        <div>
+                        </div>
+                        <div class="fullwidth-table-outer">
+                            <table>
+                                <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Name
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Field/Area
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Scale of Workflows
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Supported Simulations
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Key Tools/Features
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Tutorials/Resources
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Responsible Group
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Institute/Affiliation
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Active
+                                        </th>
+                                        <th data-highlight-colour="#ff8f73" scope="col">
+                                            Description
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://wiki.fysik.dtu.dk/ase/" rel="nofollow">
+                                                            ASE
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://wiki.fysik.dtu.dk/ase/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/112820663.png" alt="ASE logo" width="43" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Atomistic Simulations
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Small-scale (e.g., single molecules) to large-scale high-throughput
+                                            computations
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, MD, NEB, Transport, Structure Optimization, Thermochemistry, Phonon
+                                            calculations using all the major First Principles codes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://wiki.fysik.dtu.dk/ase/python.html#what-is-python"
+                                                rel="nofollow" title="">
+                                                Python interfaces,
+                                            </a>
+                                            <a href="https://wiki.fysik.dtu.dk/ase/ase/calculators/calculators.html#module-ase.calculators"
+                                                rel="nofollow" title="">
+                                                ASE Calculators,
+                                            </a>
+                                            <a href="https://wiki.fysik.dtu.dk/ase/ase/optimize.html#module-ase.optimize"
+                                                rel="nofollow" title="">
+                                                Structure optimization,
+                                            </a>
+                                            <a href="https://wiki.fysik.dtu.dk/ase/ase/visualize/visualize.html#module-ase.visualize"
+                                                rel="nofollow" title="">
+                                                Visualization,
+                                            </a>
+                                            <a href="https://wiki.fysik.dtu.dk/ase/ecosystem.html" rel="nofollow" title="">
+                                                ASE echosystem,
+                                            </a>
+                                            <a href="https://wiki.fysik.dtu.dk/ase/ase/ase.html" rel="nofollow" title="">
+                                                other ASE modules
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                <a href="https://ase-workshop-2023.github.io/tutorial/" rel="nofollow">
+                                                    Tutorials-ASE
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=DhAMoJv8M_o" rel="nofollow">
+                                                    Video-Tutorials
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <br />
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            ASE Developers including
+                                            <a href="https://orbit.dtu.dk/en/persons/ask-hjorth-larsen" rel="nofollow"
+                                                title="">
+                                                Ask Hjorth Larsen
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.dtu.dk/english/" rel="nofollow" title="">
+                                                DTU, Denmark
+                                            </a>
+                                            and others
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source Python library for setting up, manipulating, running,
+                                            visualizing, and analyzing atomistic simulations.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://www.aiida.net/" rel="nofollow">
+                                                            AiiDA
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <a href="https://www.aiida.net/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820664.png" alt="AiiDA logo" width="84" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            High-Throughput Simulations, Workflow Management
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Medium-scale to large-scale high-throughput workflows
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, High-Throughput Materials Screening, Monte Carlo Simulations,
+                                            Machine-Learning Potential Calculations, Supports all major materials
+                                            science codes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://aiidateam.github.io/aiida-registry/" rel="nofollow" title="">
+                                                AiiDA plungins,
+                                            </a>
+                                            <a href="https://aiida.readthedocs.io/projects/aiida-core/en/stable/topics/workflows/index.html"
+                                                rel="nofollow" title="">
+                                                Worksflow,
+                                            </a>
+                                            <a href="https://aiida.readthedocs.io/projects/aiida-core/en/stable/topics/provenance/index.html"
+                                                rel="nofollow" title="">
+                                                Provenance,
+                                            </a>
+                                            <a href="https://www.aiidalab.net/" rel="nofollow" title="">
+                                                AiiDAlab,
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://aiida-tutorials.readthedocs.io/en/latest/" rel="nofollow">
+                                                    Tutorials-AiiDA
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=RtdXXWFLvF8&amp;list=PL19kfLn4sO_-e_A9lVYb_NBNcwoVvUP6V"
+                                                    rel="nofollow">
+                                                    Video-Tutorials
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=t6kNLwkGMP0" rel="nofollow">
+                                                    Hands-on-video
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            AiiDA Team, led by Prof.
+                                            <a href="https://people.epfl.ch/nicola.marzari?lang=en" rel="nofollow" title="">
+                                                Nicola Marzari
+                                            </a>
+                                            and
+                                            <a href="https://www.psi.ch/en/lms/people/giovanni-pizzi" rel="nofollow"
+                                                title="">
+                                                Giovanni Pizzi
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.epfl.ch/en/" rel="nofollow" title="">
+                                                École Polytechnique Fédérale de Lausanne (EPFL), Switzerland
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python framework for managing, automating, and preserving
+                                            computational materials science workflows with full data provenance.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/materialsproject/jobflow"
+                                                            rel="nofollow">
+                                                            JobFlow
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <a href="https://github.com/materialsproject/jobflow" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820659.png" alt="JobFlow" width="70" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials science, Computational Chemistry and Physics, and
+                                            High-throughput Computing
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Medium-scale to large-scale high-throughput workflows locally or on HPC
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, MD, Machine learning-based property predictions, High-throughput
+                                            materials screening, Custom workflows for user-defined computational
+                                            tasks
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://github.com/materialsproject/jobflow" rel="nofollow" title="">
+                                                Job and Flow Objects, Dynamic Workflows, Database Integration,
+                                                Tutorials and Support
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                <a href="https://materialsproject.github.io/jobflow/tutorials.html"
+                                                    rel="nofollow">
+                                                    Tutorials-JobFlow
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <br />
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials Project team including Alex Ganose, Anubhav Jain, Gian-Marco
+                                            Rignanese
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.lbl.gov/" rel="nofollow" title="">
+                                                Lawrence Berkeley National Laboratory (LBNL),
+                                            </a>
+                                            <a href="https://www.berkeley.edu/" rel="nofollow" title="">
+                                                University of California, Berkeley,
+                                            </a>
+                                            <a href="https://www.uclouvain.be/en" rel="nofollow" title="">
+                                                UCLouvain,
+                                            </a>
+                                            <a href="https://ucsd.edu/" rel="nofollow" title="">
+                                                UC San Diego,
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                An open-source Python library for creating and executing
+                                                computational workflows. It allows users to define dynamic and
+                                                complex workflows to accelerate computational materials science.
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://atomate.org/" rel="nofollow">
+                                                            Atomate
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <a href="https://atomate.org/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820662.png" alt="Atomate logo" width="81" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            High-Throughput Materials Discovery, Workflow Automation
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Single material simulations to large-scale high-throughput campaigns
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, Elastic Property Calculations, BoltzTraP, Dielectric Properties,
+                                            NEB, XAS and EELS spectra, Equation of State, Piezoelectric tensor,
+                                            Ferroelectricity
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://atomate.org/#workflows" rel="nofollow" title="">
+                                                Atomate Workflow
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://atomate.org/#documentation-tutorials" rel="nofollow">
+                                                    Tutorials-Atomate
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://atomate.org/creating_workflows.html" rel="nofollow">
+                                                    Create-Customize-Workflow
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Atomate Development Team lead by
+                                            <a href="https://bids.berkeley.edu/people/anubhav-jain" rel="nofollow" title="">
+                                                Anubhav Jain
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.lbl.gov/" rel="nofollow" title="">
+                                                Lawrence Berkeley National Laboratory (LBNL),
+                                            </a>
+                                            <a href="https://www.berkeley.edu/" rel="nofollow" title="">
+                                                University of California, Berkeley
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python framework for automating high-throughput materials
+                                            science simulations, built on Pymatgen, custodian and FireWorks, with a
+                                            focus on pre-built, reproducible workflows.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://pymatgen.org/" rel="nofollow">
+                                                            Pymatgen
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <a href="https://pymatgen.org/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820655.png" alt="Pymatgen logo" width="85" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Materials Informatics and Materials Analysis
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Analysis and preprocessing of small to large-scale high-throughput
+                                            workflows
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, Phase diagrams, Pourbaix diagrams, Diffusion analyses, Reactions,
+                                            Structure analysis and supports VASP, ABINIT, QE etc
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://pypi.org/project/pymatgen-analysis-diffusion/" rel="nofollow"
+                                                title="">
+                                                pymatgen-analysis-diffusion,
+                                            </a>
+                                            <a href="https://pypi.org/project/pymatgen-analysis-defects/" rel="nofollow"
+                                                title="">
+                                                pymatgen-analysis-defects,
+                                            </a>
+                                            <a href="https://pymatgen.org/addons.html" rel="nofollow" title="">
+                                                I/O add-ons
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                <a href="https://pymatgen.org/usage.html" rel="nofollow">
+                                                    Tutorials-pymatgen
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=b0tieiedGdg" rel="nofollow">
+                                                    Video-Tutorials
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Pymatgen Development Team led by Prof.
+                                            <a href="https://jacobsschool.ucsd.edu/people/profile/shyue-ping-ong"
+                                                rel="nofollow" title="">
+                                                Shyue Ping Ong
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.lbl.gov/" rel="nofollow" title="">
+                                                Lawrence Berkeley National Laboratory (LBNL),
+                                            </a>
+                                            <a href="https://www.berkeley.edu/" rel="nofollow" title="">
+                                                University of California, Berkeley
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source Python library for materials analysis, simulation setup,
+                                            and data processing, designed to accelerate computational materials
+                                            science and informatics.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div title="">
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://materialsproject.github.io/custodian/"
+                                                            rel="nofollow">
+                                                            Custodian
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://materialsproject.github.io/custodian/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820661.png" alt="Custodian" width="75" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Job management workflows for Materials Science
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Small to Large-Scale (High-Throughput) error handling workflows
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Various DFT codes (VASP, QE, QChem, NWChem etc), MD simulations,
+                                            high-throughput error handling
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://materialsproject.github.io/custodian/custodian.html"
+                                                rel="nofollow" title="">
+                                                Error Correction, Job Management, Modular Framework, Validation,
+                                                custodian package
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p title="">
+                                                <a href="https://materialsproject.github.io/custodian/#usage"
+                                                    rel="nofollow">
+                                                    Tutorials-Custodian
+                                                </a>
+                                            </p>
+                                            <p title="">
+                                                <a href="https://materialsproject.github.io/custodian/custodian.html"
+                                                    rel="nofollow">
+                                                    Custodian-documentation
+                                                </a>
+                                            </p>
+                                            <p title="">
+                                                <br />
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Custodian Development Team led by Prof.
+                                            <a href="https://jacobsschool.ucsd.edu/people/profile/shyue-ping-ong"
+                                                rel="nofollow" title="">
+                                                Shyue Ping Ong
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.lbl.gov/" rel="nofollow" title="">
+                                                Lawrence Berkeley National Laboratory (LBNL),
+                                            </a>
+                                            <a href="https://www.berkeley.edu/" rel="nofollow" title="">
+                                                University of California, Berkeley
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python package that automates error correction and job
+                                            management for computational materials science simulations
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div title="">
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://materialsproject.github.io/fireworks/"
+                                                            rel="nofollow">
+                                                            FireWorks
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://materialsproject.github.io/fireworks/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820660.png" alt="FireWorks" width="81" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            High-Throughput Computing, and Workflow Management.
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Small-scale (single jobs) to large-scale high-throughput workflows
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, MD, Monte Carlo Simulations, and Custom Computational Tasks
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://materialsproject.github.io/fireworks/firetask_tutorial.html"
+                                                rel="nofollow" title="">
+                                                Firetasks,
+                                            </a>
+                                            <a href="https://materialsproject.github.io/fireworks/dynamic_wf_tutorial.html"
+                                                rel="nofollow" title="">
+                                                Dynamic Workflows,
+                                            </a>
+                                            <a href="https://materialsproject.github.io/fireworks/design_tips.html"
+                                                rel="nofollow" title="">
+                                                Duplicate Detection, Multi-Firetask
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                <a href="https://materialsproject.github.io/fireworks/#quickstart-and-tutorials"
+                                                    rel="nofollow">
+                                                    Tutorials-FireWorks
+                                                </a>
+                                            </p>
+                                            <p title="">
+                                                <a href="https://www.youtube.com/watch?v=sT7KIVRXpxo&amp;t=956s"
+                                                    rel="nofollow">
+                                                    Video-Tutorial
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            FireWorks Development Team led by
+                                            <a href="https://bids.berkeley.edu/people/anubhav-jain" rel="nofollow" title="">
+                                                Anubhav Jain
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://www.lbl.gov/" rel="nofollow" title="">
+                                                Lawrence Berkeley National Laboratory (LBNL),
+                                            </a>
+                                            <a href="https://www.berkeley.edu/" rel="nofollow" title="">
+                                                University of California, Berkeley
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source Python-based workflow management system for defining,
+                                            executing, and monitoring high-throughput computational workflows
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://pyiron.org/" rel="nofollow">
+                                                            Pyiron
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://pyiron.org/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820656.png" alt="Pyiron logo" width="56" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Atomistic Modeling, and Materials Informatics
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Small-scale (interactive prototyping) to large-scale high-throughput
+                                            workflows
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DET, MD, Thermodynamic Integration and supports VASP, LAMMPS etc
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://pyiron.readthedocs.io/en/latest/apidoc/pyiron.html#module-pyiron"
+                                                rel="nofollow" title="">
+                                                pyiron package,
+                                            </a>
+                                            compatible with
+                                            <a href="https://wiki.fysik.dtu.dk/ase/" rel="nofollow" title="">
+                                                ASE,
+                                            </a>
+                                            Feedback Loops, Integrated visualization (
+                                            <a href="https://github.com/nglviewer/nglview" rel="nofollow" title="">
+                                                NGLview
+                                            </a>
+                                            )
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://pyiron.readthedocs.io/en/latest/source/examples.html"
+                                                    rel="nofollow">
+                                                    Tutorials-pyiron
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=xNkzZx5Be8c" rel="nofollow">
+                                                    Video-Tutorial
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/@pyironIDE/videos" rel="nofollow">
+                                                    YouTube-Channel
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Pyiron Development Team led by Prof.
+                                            <a href="https://www.mpie.de/person/43010" rel="nofollow" title="">
+                                                Jörg Neugebauer
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.mpie.de/CM" rel="nofollow" title="">
+                                                Computational Materials Design (CM) department,
+                                            </a>
+                                            <a href="https://www.mpie.de/" rel="nofollow" title="">
+                                                Max-Planck-Institut für Eisenforschung (MPIE)
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python-based integrated development environment (IDE) for
+                                            computational materials science, combining simulation, workflow
+                                            management, and data handling in a unified platform.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <strong title="">
+                                                <a href="https://asr.readthedocs.io/en/latest/" rel="nofollow">
+                                                    ASR
+                                                </a>
+                                            </strong>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Computational Materials Science, High-Throughput Materials Modeling
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Small-scale (single material simulations) to large-scale high-throughput
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            DFT, Many-Body Perturbation Theory (GW, BSE), Phonon Calculations, and
+                                            Structural Optimization, B
+                                            <span title="">
+                                                and Topology and supports GPAW
+                                            </span>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://asr.readthedocs.io/en/latest/" rel="nofollow" title="">
+                                                Atomic Simulation Recipes,
+                                            </a>
+                                            <a href="https://gitlab.com/asr-dev/asr" rel="nofollow" title="">
+                                                Source code of ASR
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=X6_baVQwap8" rel="nofollow">
+                                                    Video-Tutorial
+                                                </a>
+                                            </p>
+                                            <p>
+                                                Note:
+                                                <a href="https://www.youtube.com/watch?v=lJX6YABbB7Q" rel="nofollow">
+                                                    ASE and ASR are related
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Atomic Simulation Recipes Team led by Prof.
+                                            <a href="https://orbit.dtu.dk/en/persons/kristian-sommer-thygesen"
+                                                rel="nofollow" title="">
+                                                Kristian Sommer Thygesen
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://physics.dtu.dk/research/sections/camd" rel="nofollow" title="">
+                                                CAMD,
+                                            </a>
+                                            <a href="https://www.dtu.dk/english/" rel="nofollow" title="">
+                                                DTU, Denmark
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source Python framework for automating high-throughput atomistic
+                                            simulations, built on ASE and optimized for GPAW, with a focus on
+                                            materials discovery
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://signac.io/" rel="nofollow">
+                                                            signac
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://signac.io/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820654.png" alt="signac logo" width="84" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p title="">
+                                                Materials Science, Data Management for Scientific Workflows.
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Small-scale to large-scale high-throughput workflows (hundreds of
+                                            thousands of jobs)
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            DFT, MD, Monte Carlo Simulations, and General Computational Workflows
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://docs.signac.io/projects/core/en/latest/api.html" rel="nofollow"
+                                                title="">
+                                                API Reference,
+                                            </a>
+                                            <a href="https://docs.signac.io/en/latest/flow-project.html" rel="nofollow"
+                                                title="">
+                                                FlowProject,
+                                            </a>
+                                            <a href="https://docs.signac.io/en/latest/packages.html" rel="nofollow"
+                                                title="">
+                                                other/different packages
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://docs.signac.io/en/latest/tutorial.html" rel="nofollow">
+                                                    Tutorias-signac
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://www.youtube.com/watch?v=DuC98z2vYE0" rel="nofollow">
+                                                    Video-Tutorial
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            signac Development Team led by Prof.
+                                            <a href="https://glotzerlab.engin.umich.edu/home/people/prof-sharon-glotzer/"
+                                                rel="nofollow" title="">
+                                                Sharon C. Glotzer
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://umich.edu/" rel="nofollow" title="">
+                                                University of Michigan, USA
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python framework for managing file-based computational
+                                            workflows, designed to streamline data management
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://myqueue.readthedocs.io/" rel="nofollow">
+                                                            MyQueue
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://myqueue.readthedocs.io/" rel="nofollow">
+                                                            <span>
+                                                                <img src="./logos/112820658.png" alt="MyQueue logo" width="48" />
+                                                            </span>
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                Computational Science, HPC, Task and workflow scheduling system
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Small-scale (single jobs) to large-scale workflows (thousands of tasks)
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            General Computational Tasks, including Density Functional Theory (DFT)
+                                            and Molecular Dynamics (MD)
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Command-Line Interface (
+                                            <a href="https://pypi.org/project/myqueue/" rel="nofollow" title="">
+                                                mq
+                                            </a>
+                                            ), Python API, Scheduler Support, Personal Queue
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p>
+                                                <a href="https://myqueue.readthedocs.io/quickstart.html" rel="nofollow">
+                                                    Quick-start
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://myqueue.readthedocs.io/workflows.html" rel="nofollow">
+                                                    Workflow-Tutorials
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            MyQueue Development Team led by Prof.
+                                            <a href="https://orbit.dtu.dk/en/persons/kristian-sommer-thygesen"
+                                                rel="nofollow" title="">
+                                                Kristian Sommer Thygesen
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <a href="https://physics.dtu.dk/research/sections/camd" rel="nofollow" title="">
+                                                CAMD,
+                                            </a>
+                                            <a href="https://www.dtu.dk/english/" rel="nofollow" title="">
+                                                DTU, Denmark
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source Python tool for simplifying task submission and workflow
+                                            management on HPC clusters, acting as a frontend for SLURM, PBS, and LSF
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <strong title="">
+                                                <a href="https://cwl-airflow.readthedocs.io/en/latest/" rel="nofollow">
+                                                    CWL-Airflow
+                                                </a>
+                                            </strong>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Bioinformatics, Computational biology, and Workflow Management
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Suitable for smaller or less computationally intensive pipelines
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            ChIP-Seq data analysis, Super-enhancer identification, RNA sequencing
+                                            (RNA-Seq)
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Common Workflow Language (CWL), Apache Airflow, Docker Support, REST API
+                                            and Airflow UI
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://cwl-airflow.readthedocs.io/en/latest/readme/quick_start.html"
+                                                    rel="nofollow">
+                                                    Quick-start
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://cwl-airflow.readthedocs.io/en/latest/readme/how_to_use.html"
+                                                    rel="nofollow">
+                                                    Tutorials-CWL-Airflow
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            CWL-Airflow Development Team (Michael Kotliar, Andrey V. Kartashov, and
+                                            Artem Barski)
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <a href="https://www.cincinnatichildrens.org/" rel="nofollow" title="">
+                                                Cincinnati Children's Hospital Medical Center,
+                                            </a>
+                                            <a href="https://www.uc.edu/" rel="nofollow" title="">
+                                                University of Cincinnati, Cincinnati, OH, USA
+                                            </a>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            A Python package that extends Apache Airflow to execute CWL workflows,
+                                            providing scalable pipeline management for bioinformatics and
+                                            data-intensive research.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://nanohub.org/" rel="nofollow">
+                                                            nanoHUB
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <br />
+                                                </p>
+                                                <p>
+                                                    <a href="https://nanohub.org/" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820657.png" alt="nanoHUB logo" width="84" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Computational nanotechnology research, education, and collaboration
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Small to medium scale
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Nanoelectronics, Metal-Oxide-Semiconductor, ABACUS for semiconductor,
+                                            DFT
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                <a href="https://nanohub.org/resources/tools" rel="nofollow">
+                                                    Rappture Toolkit, Others tools,
+                                                </a>
+                                                <a href="https://nanohub.org/resources/courses" rel="nofollow">
+                                                    Educational courses,
+                                                </a>
+                                                <a href="https://nanohub.org/tools/intromllab" rel="nofollow">
+                                                    Machine Learning Lab Module
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                <a href="https://www.youtube.com/@nanohubtechtalks/videos" rel="nofollow">
+                                                    YouTube-Channel
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Network for Computational Nanotechnology (NCN) Team including Prof. Mark
+                                            S. Lundstrom
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            <p title="">
+                                                Purdue University, West Lafayette, Indiana, USA, Rosen Center for
+                                                Advanced Computing (RCAC), Network for Computational Nanotechnology
+                                                (NCN)
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#abf5d1">
+                                            An open-source and free to use platform which is a basically hybrid
+                                            platform (data repository with workflow capabilities), with various
+                                            tools and educational courses
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <div>
+                                                <p>
+                                                    <strong title="">
+                                                        <a href="https://github.com/libAtoms/workflow" rel="nofollow">
+                                                            WFL
+                                                        </a>
+                                                    </strong>
+                                                </p>
+                                                <p>
+                                                    <a href="https://github.com/libAtoms/workflow" rel="nofollow">
+                                                        <span>
+                                                            <img src="./logos/112820653.png" alt="WFL logo" width="54" />
+                                                        </span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Computational Materials Science, Atomistic Simulations, Cheminformatics,
+                                            and MD
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Small to large-scale
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Energy and Force Calculations, Geometry optimization (DFT), MD, Gaussian
+                                            Approximation Potential, Atomic Cluster Expansion (ACE)
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p title="">
+                                                <span>
+                                                    ConfigSet/OutputSpec, Autoparallelize, Calculator
+                                                    Integration, Normal Mode Generation, GAP/ACE Fitting
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p>
+                                                <a href="https://libatoms.github.io/workflow/first_example.html"
+                                                    rel="nofollow">
+                                                    Example-Tutorial
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://libatoms.github.io/workflow/overview.parallelisation.html"
+                                                    rel="nofollow">
+                                                    Task-parallelize
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a href="https://libatoms.github.io/workflow/overview.queued.html"
+                                                    rel="nofollow">
+                                                    Jobs-queue
+                                                </a>
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            LibAtoms developer community, with contributors like N. Bernstein, T. K.
+                                            Stenczel, and E. Gelzinyte
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            <p title="">
+                                                University of Warwick, and others (libAtoms GitHub organization)
+                                            </p>
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            Yes
+                                        </td>
+                                        <td data-highlight-colour="#fff0b3">
+                                            An open-source Python package for parallelizing materials science
+                                            workflows, processing atomic structures for tasks with tools such as
+                                            CASTEP and VASP, and scaling computations from local to cluster
+                                            environments.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card">
+                        </div>
+                        <p>
+                            <br />
+                        </p>
+                        <div>
+                            Created by
+                            <span>
+                                Manoar Hossain
+                            </span>
+                            <!-- Added latest update date & time = starts -->
+                            <footer>
+                                <p id="last-update"></p>
+                            </footer>
+                            <script>
+                                document.getElementById('last-update').textContent = "Last updated: " + document.lastModified;
+                            </script>
+                            <!-- Added latest update date & time = ends -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer" role="contentinfo">
+                <section>
+            </div>
+            </section>
+        </div>
+    </div>
+    <!--MH: this script is for collapsable/expandable section---------------------starts-->
+    <script>
+        function toggleThisExpander(button) {
+            var content = button.parentElement.nextElementSibling;
+            var expanded = button.getAttribute('aria-expanded') === 'true';
+            if (expanded) {
+                content.style.display = 'none';
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                content.style.display = 'block';
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+    </script>
+    <!--MH: this script is for collapsable/expandable section---------------------ends-->
+</body>
+
+</html>
