@@ -8,4 +8,3 @@ Find **property databases**, **simulation‑ready datasets**, and practical tool
 
 <a href="https://pc2.github.io/Scientific-Databases-Datasets-and-Workflows/" target="_blank">🔗 Visit the portal</a>
 
-<!--<a href="https://manoarphy.github.io/Scientific-Databases-Datasets-and-Workflows/" target="_blank" onclick="window.open(this.href, '_blank'); return false;">🔗 Visit the portal</a> -->
